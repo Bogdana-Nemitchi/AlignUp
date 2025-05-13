@@ -17,5 +17,11 @@ namespace AlignUp.Web
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            // Inițializează sesiunea pentru utilizator
+            Session["User"] = null;
+        }
     }
 }

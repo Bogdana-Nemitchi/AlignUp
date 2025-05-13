@@ -13,6 +13,8 @@ namespace AlignUp.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("{*staticfile}", new { staticfile = @".*\.(css|js|gif|jpg|jpeg|png|woff|woff2|ttf|svg)" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
