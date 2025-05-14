@@ -51,7 +51,7 @@ namespace AlignUp.Web.Controllers
 
         public ActionResult Login()
         {
-            return View("Login");
+            return View();
         }
 
 

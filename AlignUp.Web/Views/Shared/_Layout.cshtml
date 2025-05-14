@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "_Layout.cshtml";
 }
 
@@ -11,19 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Catalog</title>
-    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <!-- https://fonts.google.com/ -->
     <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.min.css")">
     <link rel="stylesheet" href="@Url.Content("~/css/templatemo-video-catalog.css")">
-
-    <!--
-
-    TemplateMo 552 Video Catalog
-
-    https://templatemo.com/tm-552-video-catalog
-
-    -->
 </head>
 
 <body>
@@ -62,8 +52,6 @@
                                                 <a class="nav-link tm-nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
                                             </li>
 
-
-                                            @* Buton de Login / Logout *@
                                             @{ var user = Session["User"] as string; }
 
                                             @if (string.IsNullOrEmpty(user))
@@ -133,7 +121,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
                             <div class="position-relative tm-thumbnail-container">
                                 <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="video-page.html" class="position-absolute tm-img-overlay">
+                                <a href="@Url.Action("Video1","Content")" class="position-absolute tm-img-overlay">
                                     <i class="fas fa-play tm-overlay-icon"></i>
                                 </a>
                             </div>
