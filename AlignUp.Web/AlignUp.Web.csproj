@@ -142,6 +142,8 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
     <Content Include="js\parallax.min.js" />
+    <Content Include="video\ochivideo_2025-05-20_02-40-15.mp4" />
+    <Content Include="video\spatevideo_2025-05-20_02-40-46.mp4" />
     <Content Include="video\wheat-field.mp4" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -179,6 +181,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Content\Video1.cshtml" />
+    <Content Include="Views\Content\Video2.cshtml" />
+    <Content Include="Views\Content\Video3.cshtml" />
+    <Content Include="Views\Content\Video4.cshtml" />
+    <Content Include="Views\Content\Video5.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

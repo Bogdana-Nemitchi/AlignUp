@@ -13,5 +13,22 @@ namespace AlignUp.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Video2()
+        {
+            return View();
+        }
+        public ActionResult Video3()
+        {
+            return View();
+        }
+        public ActionResult Video4()
+        {
+            return View();
+        }
+        public ActionResult Video5()
+        {
+            return View();
+        }
     }
 }
