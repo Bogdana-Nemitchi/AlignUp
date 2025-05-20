@@ -113,6 +113,7 @@
     <Content Include="css\style.css" />
     <Content Include="css\templatemo-video-catalog.css" />
     <Content Include="fontawesome\css\all.min.css" />
+    <Content Include="fontawesome\css\login-style.css" />
     <Content Include="fontawesome\LICENSE.txt" />
     <Content Include="fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome\webfonts\fa-regular-400.svg" />
@@ -123,7 +124,7 @@
     <Content Include="img\about-3.jpg" />
     <Content Include="img\contact-1.jpg" />
     <Content Include="img\contact-2.jpg" />
-    <Content Include="img\hero-bg.jpg" />
+    <Content Include="img\hero.jpg" />
     <Content Include="img\select-arrow.png" />
     <Content Include="img\testimonial-1.jpg" />
     <Content Include="img\testimonial-2.jpg" />
