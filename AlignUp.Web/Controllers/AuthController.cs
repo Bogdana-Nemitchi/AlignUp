@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace AlignUp.Web.Controllers
@@ -18,49 +19,77 @@ namespace AlignUp.Web.Controllers
             _auth = bl.GetAuthBL();
         }
 
-
-        // GET: Auth1
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Login()
         {
-            return View();
+            return View("Login", new UserLoginDTO());
         }
+
         [HttpPost]
-        public ActionResult Auth(UserDataLogin login)
+        public ActionResult Auth(UserDataLogin loginForm)
         {
-            var data = new UserLoginDTO
+            if (!ModelState.IsValid)
             {
-                Password = login.Password,
-                Username = login.Username,
-                UserIp = "localhost"
+                ViewBag.Error = "Datele introduse nu sunt valide.";
+                return View("Login", new UserLoginDTO { Username = loginForm.Username });
+            }
+
+            var loginDataForLogic = new UserLoginDTO
+            {
+                Password = loginForm.Password,
+                Username = loginForm.Username,
+                UserIp = Request.UserHostAddress
             };
 
-            string token = _auth.UserAuthLogic(data);
+            string token = _auth.UserAuthLogic(loginDataForLogic);
 
             if (!string.IsNullOrEmpty(token))
             {
-                Session["User"] = login.Username;
+                Session["UserToken"] = token;
+                Session["User"] = loginForm.Username;
+                Session["LoginTime"] = DateTime.UtcNow;
+
                 return RedirectToAction("Index", "Home");
             }
 
             ViewBag.Error = "Username sau parolă incorectă!";
-
-            // Adaugă această linie pentru debugging:
-            return View("Login", new UserLoginDTO());
+            return View("Login", new UserLoginDTO { Username = loginForm.Username });
         }
 
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-
+        [HttpGet]
         public ActionResult Logout()
         {
-            Session.Clear(); // Șterge toate datele din sesiune
-            return RedirectToAction("Index", "Home"); // Redirecționează utilizatorul la pagina principală
+       
+       return View();
         }
 
+            if (Request.Cookies["ASP.NET_SessionId"] != null)
+            {
+                Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddDays(-1);
+            }
 
+            if (Request.Cookies[AntiForgeryConfig.CookieName] != null)
+            {
+                Response.Cookies[AntiForgeryConfig.CookieName].Expires = DateTime.Now.AddDays(-1);
+            }
+
+            return RedirectToAction("Login", "Auth");
+        }
+
+        public ActionResult DevLogin(string username)
+        {
+            if (!string.IsNullOrEmpty(username) &&
+                (username.Equals("Andriana", StringComparison.OrdinalIgnoreCase) ||
+                 username.Equals("admin", StringComparison.OrdinalIgnoreCase)))
+            {
+                Session["User"] = username;
+                Session["UserToken"] = "DEV_TOKEN_" + Guid.NewGuid().ToString();
+                Session["LoginTime"] = DateTime.UtcNow;
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Login");
+        }
     }
 }

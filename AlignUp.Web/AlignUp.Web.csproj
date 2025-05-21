@@ -113,6 +113,7 @@
     <Content Include="css\style.css" />
     <Content Include="css\templatemo-video-catalog.css" />
     <Content Include="fontawesome\css\all.min.css" />
+    <Content Include="fontawesome\css\login-style.css" />
     <Content Include="fontawesome\LICENSE.txt" />
     <Content Include="fontawesome\webfonts\fa-brands-400.svg" />
     <Content Include="fontawesome\webfonts\fa-regular-400.svg" />
