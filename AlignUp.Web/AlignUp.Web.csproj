@@ -124,7 +124,9 @@
     <Content Include="img\contact-1.jpg" />
     <Content Include="img\contact-2.jpg" />
     <Content Include="img\hero-bg.jpg" />
+    <Content Include="img\ochi1.jpg" />
     <Content Include="img\select-arrow.png" />
+    <Content Include="img\spate2.jpg" />
     <Content Include="img\testimonial-1.jpg" />
     <Content Include="img\testimonial-2.jpg" />
     <Content Include="img\testimonial-3.png" />
@@ -142,6 +144,7 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
     <Content Include="js\parallax.min.js" />
+    <Content Include="video\Healthy Living%28720P_HD%29.mp4" />
     <Content Include="video\ochivideo_2025-05-20_02-40-15.mp4" />
     <Content Include="video\spatevideo_2025-05-20_02-40-46.mp4" />
     <Content Include="video\wheat-field.mp4" />

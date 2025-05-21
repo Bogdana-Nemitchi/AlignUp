@@ -28,12 +28,12 @@ https://templatemo.com/tm-552-video-catalog
             <div class="potition-absolute tm-site-header">
                 <div class="container-fluid position-relative">
                     <div class="row">
-                        <div class="col-7 col-md-4">
+                        <!--<div class="col-7 col-md-4">
                             <a href="index.html" class="tm-bg-black text-center tm-logo-container">
                                 <i class="fas fa-video tm-site-logo mb-3"></i>
                                 <h1 class="tm-site-name">Video Catalog</h1>
                             </a>
-                        </div>
+                        </div>-->
                         <div class="col-5 col-md-8 ml-auto mr-0">
                             <div class="tm-site-nav">
                                 <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
@@ -47,14 +47,17 @@ https://templatemo.com/tm-552-video-catalog
                                     </button>
                                     <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                                         <ul class="navbar-nav text-uppercase">
+                                            <li class="nav-item">
+                                                <a class="nav-link tm-nav-link" href="@Url.Action("Index", "Home")">Videos</a>
+                                            </li>
                                             <li class="nav-item active">
-                                                <a class="nav-link tm-nav-link" href="index.html">Videos <span class="sr-only">(current)</span></a>
+                                                <a class="nav-link tm-nav-link" href="@Url.Action("About", "Home")">About <span class="sr-only">(current)</span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link tm-nav-link" href="about.html">About</a>
+                                                <a class="nav-link tm-nav-link" href="@Url.Action("Contact", "Home")"> Contact</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link tm-nav-link" href="contact.html">Contact</a>
+                                                <a class="nav-link tm-nav-link" href="@Url.Action("Login", "Auth")">Login</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -66,7 +69,7 @@ https://templatemo.com/tm-552-video-catalog
             </div>
             <div class="tm-welcome-container tm-fixed-header tm-fixed-header-1">
                 <div class="text-center">
-                    <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto">Background image can be fixed. Content will simply slide over.</p>
+                    <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto"></p>
                 </div>
             </div>
 
@@ -82,7 +85,7 @@ https://templatemo.com/tm-552-video-catalog
                         <div class="col-12">
                             <!-- Video player 1422x800 -->
                             <video width="1422" height="800" controls autoplay>
-                                <source src="video/wheat-field.mp4" type="video/mp4">
+                                <source src="video/ochivideo_2025-05-20_02-40-15.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -251,18 +254,18 @@ https://templatemo.com/tm-552-video-catalog
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-    	$(document).ready(function() {
-    		$('.tm-likes-box').click(function(e) {
-    			e.preventDefault();
-    			$(this).toggleClass('tm-liked');
+        $(document).ready(function () {
+            $('.tm-likes-box').click(function (e) {
+                e.preventDefault();
+                $(this).toggleClass('tm-liked');
 
-    			if($(this).hasClass('tm-liked')) {
-    				$('#tm-likes-count').html('486 likes');
-    			} else {
-    				$('#tm-likes-count').html('485 likes');
-    			}
-    		});
-    	});
+                if ($(this).hasClass('tm-liked')) {
+                    $('#tm-likes-count').html('486 likes');
+                } else {
+                    $('#tm-likes-count').html('485 likes');
+                }
+            });
+        });
     </script>
 </body>
 </html>
