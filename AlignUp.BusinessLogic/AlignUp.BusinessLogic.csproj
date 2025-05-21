@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BLStruct\AuthBL.cs" />
     <Compile Include="BusinessLogic.cs" />
+    <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="Interface\IAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
