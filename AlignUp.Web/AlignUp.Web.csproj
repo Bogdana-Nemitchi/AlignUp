@@ -124,8 +124,10 @@
     <Content Include="img\about-3.jpg" />
     <Content Include="img\contact-1.jpg" />
     <Content Include="img\contact-2.jpg" />
-    <Content Include="img\hero.jpg" />
+    <Content Include="img\hero-bg.jpg" />
+    <Content Include="img\ochi1.jpg" />
     <Content Include="img\select-arrow.png" />
+    <Content Include="img\spate2.jpg" />
     <Content Include="img\testimonial-1.jpg" />
     <Content Include="img\testimonial-2.jpg" />
     <Content Include="img\testimonial-3.png" />
@@ -143,6 +145,9 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
     <Content Include="js\parallax.min.js" />
+    <Content Include="video\Healthy Living%28720P_HD%29.mp4" />
+    <Content Include="video\ochivideo_2025-05-20_02-40-15.mp4" />
+    <Content Include="video\spatevideo_2025-05-20_02-40-46.mp4" />
     <Content Include="video\wheat-field.mp4" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -150,6 +155,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BundleConfig.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,6 +184,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Content\Video1.cshtml" />
+    <Content Include="Views\Content\Video2.cshtml" />
+    <Content Include="Views\Content\Video3.cshtml" />
+    <Content Include="Views\Content\Video4.cshtml" />
+    <Content Include="Views\Content\Video5.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BundleConfig\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlignUp.BusinessLogic\AlignUp.BusinessLogic.csproj">

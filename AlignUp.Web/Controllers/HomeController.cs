@@ -23,5 +23,6 @@ namespace AlignUp.Web.Controllers
         {
             return View();
         }
+        
     }
 }
