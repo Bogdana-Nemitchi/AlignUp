@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AlignUp.BusinessLogic.Core;
 using AlignUp.Domain.Model.User;
 
 namespace AlignUp.BusinessLogic.Interface
@@ -7,28 +8,29 @@ namespace AlignUp.BusinessLogic.Interface
     public interface IAuth
     {
         // Metode pentru autentificare utilizator
-        UserLoginResponseDTO UserLogin(UserLoginDTO userLogin);
+        UserLoginResponseDTO UserLogin(Domain.Model.User.UserLoginDTO userLogin);
 
         // Metode pentru înregistrare utilizator
-        bool UserRegister(UserRegisterDTO userRegister);
+        bool UserRegister(UserApi.UserRegisterDTO userRegister);
 
         // Metode pentru gestionarea sesiunilor
         bool ValidateUserToken(string token);
         UserInfo GetUserInfoByToken(string token);
 
         // Metode pentru administrare utilizatori
-        List<UserDbTable> GetAllUsers();
-        UserDbTable GetUserById(int id);
-        void AddUser(UserDbTable user);
-        void UpdateUser(UserDbTable user);
+        List<Domain.Model.User.UserDbTable> GetAllUsers();
+        Domain.Model.User.UserDbTable GetUserById(int id);
+        void AddUser(Domain.Model.User.UserDbTable user);
+        void UpdateUser(Domain.Model.User.UserDbTable user);
         void DeleteUser(int id);
 
         // Metode pentru gestionarea rolurilor utilizatorilor
-        List<UserDbTable> GetUsersByRole(UserRole role);
-        bool ChangeUserRole(int userId, UserRole newRole);
+        List<Domain.Model.User.UserDbTable> GetUsersByRole(UserApi.UserRole role);
+        bool ChangeUserRole(int userId, UserApi.UserRole newRole);
 
         // Metode pentru statistici
         int GetTotalUserCount();
-        List<UserDbTable> GetRecentUsers(int count);
+        List<Domain.Model.User.UserDbTable> GetRecentUsers(int count);
+        string UserAuthLogic(Domain.Model.User.UserLoginDTO loginDataForLogic);
     }
 }
