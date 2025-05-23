@@ -59,8 +59,9 @@ namespace AlignUp.Web.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
-            Session.Clear();
-            Session.Abandon();
+       
+       return View();
+        }
 
             if (Request.Cookies["ASP.NET_SessionId"] != null)
             {
