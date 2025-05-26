@@ -189,7 +189,6 @@
     <Content Include="Views\Content\video3.cshtml" />
     <Content Include="Views\Content\video4.cshtml" />
     <Content Include="Views\Content\video5.cshtml" />
-    <Content Include="Views\Auth\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
