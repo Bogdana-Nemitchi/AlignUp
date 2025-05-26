@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-3
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 namespace AlignUp.Web
 {
     public class RouteConfig
