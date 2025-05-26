@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace AlignUp.Web.Controllers
 {
@@ -23,6 +19,11 @@ namespace AlignUp.Web.Controllers
         {
             return View();
         }
-        
+
+        // ✅ Metodă de test
+        public ActionResult Test()
+        {
+            return Content("✔️ Funcționează - răspuns din metoda Test din HomeController");
+        }
     }
 }

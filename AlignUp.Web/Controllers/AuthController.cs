@@ -1,21 +1,20 @@
 ﻿using AlignUp.BusinessLogic.Interface;
-using AlignUp.Domain.Model.User;
 using AlignUp.Web.Models.Auth;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Diagnostics;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using AlignUp.Domain.Model.User;
 
 namespace AlignUp.Web.Controllers
 {
     public class AuthController : Controller
     {
         private readonly IAuth _auth;
+
         public AuthController()
         {
-            var bl = new BusinessLogic.BusinessLogic();
+            BusinessLogic.BusinessLogic bl = new BusinessLogic.BusinessLogic();
             _auth = bl.GetAuthBL();
         }
 
@@ -34,7 +33,7 @@ namespace AlignUp.Web.Controllers
                 return View("Login", new UserLoginDTO { Username = loginForm.Username });
             }
 
-            var loginDataForLogic = new UserLoginDTO
+            UserLoginDTO loginDataForLogic = new UserLoginDTO
             {
                 Password = loginForm.Password,
                 Username = loginForm.Username,
@@ -57,25 +56,105 @@ namespace AlignUp.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult Register()
+        {
+            TempData.Clear();
+            return View(new UserRegisterDTO());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(UserRegisterDTO model)
+        {
+            Debug.WriteLine("Register method called");
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.DebugInfo = "Model invalid: " + string.Join(", ", ModelState.Values);
+                TempData["RegistrationError"] = "Formularul conține erori. Verificați datele introduse.";
+                return View(model);
+            }
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                ModelState.AddModelError("ConfirmPassword", "Parola și confirmarea parolei nu se potrivesc.");
+                TempData["RegistrationError"] = "Parolele introduse nu se potrivesc.";
+                return View(model);
+            }
+
+            try
+            {
+                UserRegisterDTO userRegisterDTO = new UserRegisterDTO
+                {
+                    Username = model.Username,
+                    Email = model.Email,
+                    Password = model.Password,
+                    RegistrationIp = Request.UserHostAddress ?? "127.0.0.1",
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
+
+                string debugInfo = $"\u00cencercare înregistrare: {model.Username}, Email: {model.Email}";
+                ViewBag.DebugInfo = debugInfo;
+                Debug.WriteLine(debugInfo);
+
+                bool result = _auth.UserRegister(userRegisterDTO);
+
+                if (result)
+                {
+                    TempData["SuccessMessage"] = "Contul a fost creat cu succes! Te poți autentifica acum.";
+                    return RedirectToAction("Login");
+                }
+
+                TempData["RegistrationError"] = "Înregistrarea nu a reușit. Este posibil ca numele de utilizator sau adresa de email să existe deja.";
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = $"Eroare la înregistrare: {ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $" Inner exception: {ex.InnerException.Message}";
+                }
+                Debug.WriteLine(errorMessage);
+                Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+
+                ViewBag.DebugInfo = errorMessage;
+                TempData["RegistrationError"] = "A apărut o eroare la înregistrare: " + ex.Message;
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult Logout()
         {
-       
-       return View();
-        }
+            Session.Clear();
+            Session.Abandon();
 
             if (Request.Cookies["ASP.NET_SessionId"] != null)
             {
-                Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddDays(-1);
+                System.Web.HttpCookie sessionCookie = new System.Web.HttpCookie("ASP.NET_SessionId", "")
+                {
+                    Expires = DateTime.Now.AddDays(-1),
+                    HttpOnly = true
+                };
+                Response.Cookies.Add(sessionCookie);
             }
 
             if (Request.Cookies[AntiForgeryConfig.CookieName] != null)
             {
-                Response.Cookies[AntiForgeryConfig.CookieName].Expires = DateTime.Now.AddDays(-1);
+                System.Web.HttpCookie antiForgeryCookie = new System.Web.HttpCookie(AntiForgeryConfig.CookieName, "")
+                {
+                    Expires = DateTime.Now.AddDays(-1),
+                    HttpOnly = true
+                };
+                Response.Cookies.Add(antiForgeryCookie);
             }
 
             return RedirectToAction("Login", "Auth");
         }
 
+        [HttpGet]
         public ActionResult DevLogin(string username)
         {
             if (!string.IsNullOrEmpty(username) &&

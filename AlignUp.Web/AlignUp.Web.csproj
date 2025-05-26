@@ -184,11 +184,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Content\Video1.cshtml" />
-    <Content Include="Views\Content\Video2.cshtml" />
-    <Content Include="Views\Content\Video3.cshtml" />
-    <Content Include="Views\Content\Video4.cshtml" />
-    <Content Include="Views\Content\Video5.cshtml" />
+    <Content Include="Views\Content\video1.cshtml" />
+    <Content Include="Views\Content\video2.cshtml" />
+    <Content Include="Views\Content\video3.cshtml" />
+    <Content Include="Views\Content\video4.cshtml" />
+    <Content Include="Views\Content\video5.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
