@@ -54,9 +54,9 @@ namespace AlignUp.BusinessLogic.Core
                         Id = user.Id,
                         Username = user.Username,
                         Email = user.Email,
-                        LastLogin = user.LastLogin ?? DateTime.Now,
+                        LastLogin = (DateTime)user.LastLogin,
                         LastIp = user.LastIp,
-                        UserRole = (UserRole)user.UserRole
+                        UserRole = Enum.TryParse<UserRole>(user.UserRole, out var role) ? role : UserRole.Standard
                     }
                 };
             }
@@ -122,7 +122,7 @@ namespace AlignUp.BusinessLogic.Core
                     RegistrationIp = data.RegistrationIp,
                     LastLogin = DateTime.Now,
                     LastIp = data.RegistrationIp,
-                    UserRole = (int)UserRole.Standard
+                    UserRole = UserRole.Standard.ToString()
                 };
 
                 db.Users.Add(user);
@@ -135,8 +135,6 @@ namespace AlignUp.BusinessLogic.Core
                 };
             }
         }
-
-        // alte metode rămân neschimbate...
     }
 
     public static class PasswordHelper

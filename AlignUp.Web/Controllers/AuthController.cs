@@ -75,53 +75,53 @@ namespace AlignUp.Web.Controllers
                 return View(model);
             }
 
-            if (model.Password != model.ConfirmPassword)
+            if (model.Password == model.ConfirmPassword)
             {
-                ModelState.AddModelError("ConfirmPassword", "Parola și confirmarea parolei nu se potrivesc.");
-                TempData["RegistrationError"] = "Parolele introduse nu se potrivesc.";
+                try
+                {
+                    UserRegisterDTO userRegisterDTO = new UserRegisterDTO
+                    {
+                        Username = model.Username,
+                        Email = model.Email,
+                        Password = model.Password,
+                        RegistrationIp = Request.UserHostAddress ?? "127.0.0.1",
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
+                    };
+
+                    string debugInfo = $"\u00cencercare înregistrare: {model.Username}, Email: {model.Email}";
+                    ViewBag.DebugInfo = debugInfo;
+                    Debug.WriteLine(debugInfo);
+
+                    bool result = _auth.UserRegister(userRegisterDTO);
+
+                    if (result)
+                    {
+                        TempData["SuccessMessage"] = "Contul a fost creat cu succes! Te poți autentifica acum.";
+                        return RedirectToAction("Login");
+                    }
+
+                    TempData["RegistrationError"] = "Înregistrarea nu a reușit. Este posibil ca numele de utilizator sau adresa de email să existe deja.";
+                }
+                catch (Exception ex)
+                {
+                    string errorMessage = $"Eroare la înregistrare: {ex.Message}";
+                    if (ex.InnerException != null)
+                    {
+                        errorMessage += $" Inner exception: {ex.InnerException.Message}";
+                    }
+                    Debug.WriteLine(errorMessage);
+                    Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+
+                    ViewBag.DebugInfo = errorMessage;
+                    TempData["RegistrationError"] = "A apărut o eroare la înregistrare: " + ex.Message;
+                }
+
                 return View(model);
             }
 
-            try
-            {
-                UserRegisterDTO userRegisterDTO = new UserRegisterDTO
-                {
-                    Username = model.Username,
-                    Email = model.Email,
-                    Password = model.Password,
-                    RegistrationIp = Request.UserHostAddress ?? "127.0.0.1",
-                    FirstName = model.FirstName,
-                    LastName = model.LastName
-                };
-
-                string debugInfo = $"\u00cencercare înregistrare: {model.Username}, Email: {model.Email}";
-                ViewBag.DebugInfo = debugInfo;
-                Debug.WriteLine(debugInfo);
-
-                bool result = _auth.UserRegister(userRegisterDTO);
-
-                if (result)
-                {
-                    TempData["SuccessMessage"] = "Contul a fost creat cu succes! Te poți autentifica acum.";
-                    return RedirectToAction("Login");
-                }
-
-                TempData["RegistrationError"] = "Înregistrarea nu a reușit. Este posibil ca numele de utilizator sau adresa de email să existe deja.";
-            }
-            catch (Exception ex)
-            {
-                string errorMessage = $"Eroare la înregistrare: {ex.Message}";
-                if (ex.InnerException != null)
-                {
-                    errorMessage += $" Inner exception: {ex.InnerException.Message}";
-                }
-                Debug.WriteLine(errorMessage);
-                Debug.WriteLine($"Stack trace: {ex.StackTrace}");
-
-                ViewBag.DebugInfo = errorMessage;
-                TempData["RegistrationError"] = "A apărut o eroare la înregistrare: " + ex.Message;
-            }
-
+            ModelState.AddModelError("ConfirmPassword", "Parola și confirmarea parolei nu se potrivesc.");
+            TempData["RegistrationError"] = "Parolele introduse nu se potrivesc.";
             return View(model);
         }
 
