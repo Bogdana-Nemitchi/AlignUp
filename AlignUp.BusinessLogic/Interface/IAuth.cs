@@ -17,18 +17,19 @@ namespace AlignUp.BusinessLogic.Interface
         UserInfo GetUserInfoByToken(string token);
 
         // Metode pentru administrare utilizatori
-        List<UserDbTable> GetAllUsers();
-        UserDbTable GetUserById(int id);
-        void AddUser(UserDbTable user);
-        void UpdateUser(UserDbTable user);
+        //List<Domain.Model.User.UserDbTable> GetAllUsers();
+       // Domain.Model.User.UserDbTable GetUserById(int id);
+        //void AddUser(Domain.Model.User.UserDbTable user);
+        //void UpdateUser(Domain.Model.User.UserDbTable user);
         void DeleteUser(int id);
 
         // Metode pentru gestionarea rolurilor utilizatorilor
-        List<UserDbTable> GetUsersByRole(UserRole role);
-        bool ChangeUserRole(int userId, UserRole newRole);
+        //List<Domain.Model.User.UserDbTable> GetUsersByRole(UserApi.UserRole role);
+        bool ChangeUserRole(int userId, UserApi.UserRole newRole);
 
         // Metode pentru statistici
         int GetTotalUserCount();
-        List<UserDbTable> GetRecentUsers(int count);
+        //List<Domain.Model.User.UserDbTable> GetRecentUsers(int count);
+        string UserAuthLogic(Domain.Model.User.UserLoginDTO loginDataForLogic);
     }
 }

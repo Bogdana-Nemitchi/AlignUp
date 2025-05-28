@@ -9,11 +9,5 @@ using System.Threading.Tasks;
 
 namespace AlignUp.BusinessLogic.BLStruct
 {
-    public class AuthBL : UserApi, IAuth
-    {
-        public string UserAuthLogic(UserLoginDTO data)
-        {
-            return UserAuthLogicAction(data);
-        }
-    }
+    
 }
