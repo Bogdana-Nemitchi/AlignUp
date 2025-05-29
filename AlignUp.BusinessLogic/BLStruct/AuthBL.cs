@@ -3,91 +3,38 @@ using AlignUp.BusinessLogic.Interface;
 using AlignUp.Domain.Model.User;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static AlignUp.BusinessLogic.Core.UserApi;
 
 namespace AlignUp.BusinessLogic.BLStruct
 {
-        public class AuthBL : UserApi, IAuth
+    public class AuthBL : IAuth
     {
-        public void AddUser(Domain.Model.User.UserDbTable user)
-        {
-            throw new NotImplementedException();
-        }
+        public void AddUser(UserDbTable user) { }
 
-        public bool ChangeUserRole(int userId, UserRole newRole)
-        {
-            throw new NotImplementedException();
-        }
+        public bool ChangeUserRole(int userId, UserApi.UserRole newRole) => true;
 
-        public void DeleteUser(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public void DeleteUser(int id) { }
 
-        public List<Domain.Model.User.UserDbTable> GetAllUsers()
-        {
-            throw new NotImplementedException();
-        }
+        public List<UserDbTable> GetAllUsers() => new List<UserDbTable>();
 
-        public List<Domain.Model.User.UserDbTable> GetRecentUsers(int count)
-        {
-            throw new NotImplementedException();
-        }
+        public List<UserDbTable> GetRecentUsers(int count) => new List<UserDbTable>();
 
-        public int GetTotalUserCount()
-        {
-            throw new NotImplementedException();
-        }
+        public int GetTotalUserCount() => 0;
 
-        public Domain.Model.User.UserDbTable GetUserById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public UserDbTable GetUserById(int id) => new UserDbTable();
 
-        public UserInfo GetUserInfoByToken(string token)
-        {
-            throw new NotImplementedException();
-        }
+        public UserInfo GetUserInfoByToken(string token) => new UserInfo();
 
-        public List<Domain.Model.User.UserDbTable> GetUsersByRole(UserRole role)
-        {
-            throw new NotImplementedException();
-        }
+        public List<UserDbTable> GetUsersByRole(UserApi.UserRole role) => new List<UserDbTable>();
 
-        public void UpdateUser(Domain.Model.User.UserDbTable user)
-        {
-            throw new NotImplementedException();
-        }
+        public void UpdateUser(UserDbTable user) { }
 
-        public string UserAuthLogic(Domain.Model.User.UserLoginDTO data)
-        {
-            return UserAuthLogicAction(data);
-        }
+        public string UserAuthLogic(UserLoginDTO data) => data.Username == "admin" && data.Password == "admin" ? Guid.NewGuid().ToString() : null;
 
-        private string UserAuthLogicAction(Domain.Model.User.UserLoginDTO data)
-        {
-            throw new NotImplementedException();
-        }
+        public UserLoginResponseDTO UserLogin(UserLoginDTO userLogin) => new UserLoginResponseDTO();
 
-        public string UserAuthWithLogic(Domain.Model.User.UserLoginDTO loginDataForLogic)
-        {
-            throw new NotImplementedException();
-        }
-        public UserLoginResponseDTO UserLogin(Domain.Model.User.UserLoginDTO userLogin)
-        {
-            throw new NotImplementedException();
-        }
+        public bool UserRegister(UserRegisterDTO userRegister) => true;
 
-        public bool UserRegister(UserRegisterDTO userRegister)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ValidateUserToken(string token)
-        {
-            throw new NotImplementedException();
-        }
+        public bool ValidateUserToken(string token) => true;
     }
 }

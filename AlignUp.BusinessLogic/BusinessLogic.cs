@@ -10,9 +10,9 @@ namespace AlignUp.BusinessLogic
 {
     public class BusinessLogic
     {
-        //public IAuth GetAuthBL()
-        //{
-            //return new AuthBL();
-        //}
+        public IAuth GetAuthBL()
+        {
+            return new AuthBL();
+        }
     }
 }
