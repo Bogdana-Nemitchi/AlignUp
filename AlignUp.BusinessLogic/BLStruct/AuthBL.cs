@@ -4,6 +4,7 @@ using AlignUp.Domain.Model.User;
 using System;
 using System.Collections.Generic;
 using static AlignUp.BusinessLogic.Core.UserApi;
+using UserRegisterDTO = AlignUp.Domain.Model.User.UserRegisterDTO;
 
 namespace AlignUp.BusinessLogic.BLStruct
 {
@@ -53,5 +54,10 @@ namespace AlignUp.BusinessLogic.BLStruct
         public void UpdateUser(Domain.Model.User.UserDbTable user) => throw new NotImplementedException();
         public bool UserRegister(UserRegisterDTO userRegister) => true;
         public bool ValidateUserToken(string token) => true;
+
+        bool IAuth.UserRegister(UserApi.UserRegisterDTO userRegister)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

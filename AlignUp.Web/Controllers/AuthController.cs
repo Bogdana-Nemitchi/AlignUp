@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using static AlignUp.BusinessLogic.Core.UserApi;
+using UserRegisterDTO = AlignUp.BusinessLogic.Core.UserApi.UserRegisterDTO;
 
 namespace AlignUp.Web.Controllers
 {
@@ -71,6 +73,34 @@ namespace AlignUp.Web.Controllers
 
             Session.Clear();
             return RedirectToAction("Login", "Auth");
+        }
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View(new Domain.Model.User.UserRegisterDTO());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(UserRegisterDTO registerData)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "Datele introduse nu sunt valide.";
+                return View(registerData);
+            }
+
+            registerData.RegistrationIp = Request.UserHostAddress;
+
+            var result = _auth.UserRegister(registerData);
+            if (result)
+            {
+                TempData["Success"] = "Contul a fost creat cu succes. Te poți autentifica.";
+                return RedirectToAction("Login");
+            }
+
+            ViewBag.Error = "A apărut o eroare la înregistrare.";
+            return View(registerData);
         }
 
 
