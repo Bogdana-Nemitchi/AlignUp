@@ -50,7 +50,7 @@ namespace AlignUp.BusinessLogic.Core
     }
 
    
-    internal class HttpCookie
+    public class HttpCookie
     {
        
         public string Name { get; set; }
@@ -130,7 +130,7 @@ namespace AlignUp.BusinessLogic.Core
             Admin = 1
         }
 
-        internal UserLoginResponseDTO UserLoginAction(UserLoginDTO data)
+        public UserLoginResponseDTO UserLoginAction(UserLoginDTO data)
         {
             try
             {
@@ -328,7 +328,7 @@ namespace AlignUp.BusinessLogic.Core
         /// <summary>
         /// Creează un cookie pentru autentificarea utilizatorului
         /// </summary>
-        internal HttpCookie CreateAuthCookie(string username)
+        public HttpCookie CreateAuthCookie(string username)
         {
             try
             {
