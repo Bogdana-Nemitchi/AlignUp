@@ -5,8 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Collections.Generic;
 using AlignUp.Domain.Model.User;
+//using AlignUp.Helper;
 using System.Data.Entity.Infrastructure;
-namespace AlignUp.BusinessLogic.Core
+
+/*namespace AlignUp.BusinessLogic.Core
 {
   
     public class UserDbTable
@@ -473,22 +475,6 @@ namespace AlignUp.BusinessLogic.Core
         {
         }
 
-        public DbSet<UserDbTable> Users { get; set; }
-        public DbSet<Session> Sessions { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            // Configurare pentru entitatea UserDbTable
-            modelBuilder.Entity<UserDbTable>()
-                .ToTable("Users")
-                .HasKey(u => u.Id);
-
-            // Configurare pentru entitatea Session
-            modelBuilder.Entity<Session>()
-                .ToTable("Sessions")
-                .HasKey(s => s.Id);
-        }
-    }
-}
+                var userInfo = new UserInfo
+                {
+                    Id = result.I*/

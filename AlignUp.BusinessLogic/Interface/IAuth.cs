@@ -8,14 +8,14 @@ namespace AlignUp.BusinessLogic.Interface
     public interface IAuth
     {
         // Metode pentru autentificare utilizator
-        UserLoginResponseDTO UserLogin(Domain.Model.User.UserLoginDTO userLogin);
+       // UserLoginResponseDTO UserLogin(UserLoginDTO userLogin);
 
         // Metode pentru înregistrare utilizator
-        bool UserRegister(UserApi.UserRegisterDTO userRegister);
+        //bool UserRegister(UserRegisterDTO userRegister);
 
         // Metode pentru gestionarea sesiunilor
-        bool ValidateUserToken(string token);
-        UserInfo GetUserInfoByToken(string token);
+        //bool ValidateUserToken(string token);
+        //UserInfo GetUserInfoByToken(string token);
 
         // Metode pentru administrare utilizatori
 
@@ -26,8 +26,8 @@ namespace AlignUp.BusinessLogic.Interface
         void DeleteUser(int id);
 
         // Metode pentru gestionarea rolurilor utilizatorilor
-        List<Domain.Model.User.UserDbTable> GetUsersByRole(UserApi.UserRole role);
-        bool ChangeUserRole(int userId, UserApi.UserRole newRole);
+        //List<Domain.Model.User.UserDbTable> GetUsersByRole(UserApi.UserRole role);
+        //bool ChangeUserRole(int userId, UserApi.UserRole newRole);
 
         // Metode pentru statistici
         int GetTotalUserCount();
