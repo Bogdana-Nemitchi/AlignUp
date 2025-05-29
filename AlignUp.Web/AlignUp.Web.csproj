@@ -124,10 +124,26 @@
     <Content Include="img\about-3.jpg" />
     <Content Include="img\contact-1.jpg" />
     <Content Include="img\contact-2.jpg" />
+    <Content Include="img\disciplina40.jpg" />
+    <Content Include="img\disciplina33.jpg" />
+    <Content Include="img\eyese.jpeg" />
     <Content Include="img\hero-bg.jpg" />
     <Content Include="img\ochi1.jpg" />
+    <Content Include="img\ochisori.png" />
+    <Content Include="img\photo_5314475928459538808_y.jpg" />
+    <Content Include="img\photo_5314475928459538809_y.jpg" />
+    <Content Include="img\photo_5314475928459538810_y.jpg" />
+    <Content Include="img\photo_5314475928459538811_x.jpg" />
+    <Content Include="img\photo_5314475928459538812_y.jpg" />
+    <Content Include="img\photo_5314475928459538813_x.jpg" />
+    <Content Include="img\photo_5314475928459538814_y.jpg" />
+    <Content Include="img\photo_5314475928459538815_y.jpg" />
+    <Content Include="img\photo_5314475928459538816_y.jpg" />
+    <Content Include="img\schimba viata 12.jpg" />
+    <Content Include="img\schimba_viata_13.jpg" />
     <Content Include="img\select-arrow.png" />
     <Content Include="img\spate2.jpg" />
+    <Content Include="img\spate3.png" />
     <Content Include="img\testimonial-1.jpg" />
     <Content Include="img\testimonial-2.jpg" />
     <Content Include="img\testimonial-3.png" />
@@ -145,9 +161,16 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.4.1.min.js" />
     <Content Include="js\parallax.min.js" />
+    <Content Include="video\disciplina1.mp4" />
+    <Content Include="video\disciplina2.mp4" />
+    <Content Include="video\dream big.mp4" />
     <Content Include="video\Healthy Living%28720P_HD%29.mp4" />
+    <Content Include="video\motivation.mp4" />
     <Content Include="video\ochivideo_2025-05-20_02-40-15.mp4" />
+    <Content Include="video\pilates1.mp4" />
+    <Content Include="video\schimba viata.mp4" />
     <Content Include="video\spatevideo_2025-05-20_02-40-46.mp4" />
+    <Content Include="video\vedere2.mp4" />
     <Content Include="video\wheat-field.mp4" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -189,6 +212,10 @@
     <Content Include="Views\Content\video3.cshtml" />
     <Content Include="Views\Content\video4.cshtml" />
     <Content Include="Views\Content\video5.cshtml" />
+    <Content Include="Views\Content\video6.cshtml" />
+    <Content Include="Views\Content\video7.cshtml" />
+    <Content Include="Views\Content\video8.cshtml" />
+    <Content Include="Views\Content\video9.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

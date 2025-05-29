@@ -1,7 +1,7 @@
 ﻿@{
     Page.Title = "Title goes here";
     //Layout = "Your Layout Page goes here";
-} 
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,15 +68,17 @@ https://templatemo.com/tm-552-video-catalog
                     </div>
                 </div>
             </div>
-            <div class="tm-welcome-container tm-fixed-header tm-fixed-header-1">
+            <div class="tm-welcome-container tm-fixed-header tm-fixed-header-video1">
                 <div class="text-center">
                     <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 text-white mx-auto"></p>
                 </div>
             </div>
-
+            
             <!-- Header image -->
             <div id="tm-fixed-header-bg"></div>
         </div>
+
+       
 
         <!-- Page content -->
         <div class="container-fluid">
@@ -95,10 +97,10 @@ https://templatemo.com/tm-552-video-catalog
                         <div class="col-xl-8 col-lg-7">
                             <!-- Video description -->
                             <div class="tm-video-description-box">
-                                <h2 class="mb-5 tm-video-title">Mauris dapibus urna nec ipsum posuere</h2>
-                                <p class="mb-4">Cras dictum pretium est, et imperdiet ex. Fusce vitae vestibulum ipsum. Maecenas ultricies ipsum a urna ullamcorper, id interdum est blandit. Vivamus sit amet justo sed erat iaculis consequat. Nulla suscipit posuere lectus ut venenatis. Proin sed orci eget tellus euismod vulputate eu eu arcu.</p>
-                                <p class="mb-4">Etiam a bibendum lorem. Curabitur ac bibendum odio. Vivamus euismod dui mauris, ut tincidunt mi congue quis. Phasellus luctus orci dolor, a luctus massa tincidunt vitae. Integer sit amet odio id libero tincidunt dignissim in eget arcu.</p>
-                                <p class="mb-4">Aliquam tristique ut magna sit amet tincidunt. Sed tempor tellus nulla, molestie luctus lectus tincidunt id. Cras euismod leo a urna placerat, vel blandit turpis fermentum.</p>
+                                <h2 class="mb-5 tm-video-title">10 simple exercises to relax and improve vision</h2>
+                                <p class="mb-4">These 10 simple exercises for eye relaxation and vision improvement can take just a few minutes during a short break at school or work, but they can have immediate effects.</p>
+                                <p class="mb-4">By gently stimulating the eye muscles and encouraging better focus and circulation, these techniques help reduce strain caused by screens, boost clarity, and leave your eyes feeling refreshed and more comfortable throughout the day.</p>
+                                
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-5">
@@ -123,7 +125,7 @@ https://templatemo.com/tm-552-video-catalog
                             </div>
                         </div>
                     </div>
-                    
+
                 </main>
             </div> <!-- .tm-content-container -->
         </div>
@@ -132,18 +134,18 @@ https://templatemo.com/tm-552-video-catalog
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-    	$(document).ready(function() {
-    		$('.tm-likes-box').click(function(e) {
-    			e.preventDefault();
-    			$(this).toggleClass('tm-liked');
+        $(document).ready(function () {
+            $('.tm-likes-box').click(function (e) {
+                e.preventDefault();
+                $(this).toggleClass('tm-liked');
 
-    			if($(this).hasClass('tm-liked')) {
-    				$('#tm-likes-count').html('486 likes');
-    			} else {
-    				$('#tm-likes-count').html('485 likes');
-    			}
-    		});
-    	});
+                if ($(this).hasClass('tm-liked')) {
+                    $('#tm-likes-count').html('486 likes');
+                } else {
+                    $('#tm-likes-count').html('485 likes');
+                }
+            });
+        });
     </script>
 </body>
 </html>
