@@ -18,6 +18,7 @@ namespace AlignUp.BusinessLogic.Interface
         UserInfo GetUserInfoByToken(string token);
 
         // Metode pentru administrare utilizatori
+
         List<Domain.Model.User.UserDbTable> GetAllUsers();
         Domain.Model.User.UserDbTable GetUserById(int id);
         void AddUser(Domain.Model.User.UserDbTable user);
@@ -30,7 +31,9 @@ namespace AlignUp.BusinessLogic.Interface
 
         // Metode pentru statistici
         int GetTotalUserCount();
+
         List<Domain.Model.User.UserDbTable> GetRecentUsers(int count);
+
         string UserAuthLogic(Domain.Model.User.UserLoginDTO loginDataForLogic);
     }
 }

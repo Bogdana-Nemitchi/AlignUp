@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AlignUp.BusinessLogic.BLStruct
 {
-    public class AuthBL : UserApi, IAuth
+        public class AuthBL : UserApi, IAuth
     {
         public void AddUser(Domain.Model.User.UserDbTable user)
         {
