@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlignUp.Web", "AlignUp.Web\AlignUp.Web.csproj", "{24E85558-A579-4FA0-8B89-B8D8337679BE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{22204C41-497D-43CC-A9EE-7ABFC53F24C8} = {22204C41-497D-43CC-A9EE-7ABFC53F24C8}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlignUp.BusinessLogic", "AlignUp.BusinessLogic\AlignUp.BusinessLogic.csproj", "{DE817D34-BA24-4F78-8A9C-84DF9DA24829}"
 EndProject
