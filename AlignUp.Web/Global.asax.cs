@@ -9,14 +9,16 @@ namespace AlignUp.Web
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Код, выполняемый при запуске приложения
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            using (var db = new ApplicationDbContext())
+            {
+                db.SeedAdmin(); 
+            }
         }
 
         void Session_Start(object sender, EventArgs e)
         {
-            // Inițializează sesiunea pentru utilizator
             Session["User"] = null;
         }
     }

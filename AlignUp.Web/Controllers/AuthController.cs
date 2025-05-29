@@ -82,7 +82,7 @@ namespace AlignUp.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(UserRegisterDTO registerData)
+        public ActionResult Register(AlignUp.Domain.Model.User.UserRegisterDTO registerData)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +92,16 @@ namespace AlignUp.Web.Controllers
 
             registerData.RegistrationIp = Request.UserHostAddress;
 
-            var result = _auth.UserRegister(registerData);
+            // Mapezi manual în tipul din business logic
+            var mappedData = new AlignUp.BusinessLogic.Core.UserApi.UserRegisterDTO
+            {
+                Username = registerData.Username,
+                Email = registerData.Email,
+                Password = registerData.Password,
+                RegistrationIp = registerData.RegistrationIp
+            };
+
+            var result = _auth.UserRegister(mappedData);
             if (result)
             {
                 TempData["Success"] = "Contul a fost creat cu succes. Te poți autentifica.";
@@ -102,6 +111,7 @@ namespace AlignUp.Web.Controllers
             ViewBag.Error = "A apărut o eroare la înregistrare.";
             return View(registerData);
         }
+
 
 
         public ActionResult DevLogin(string username)

@@ -1,25 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Conventions;
+﻿using AlignUp.BusinessLogic.Core;
+using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlignUp.BusinessLogic.DBModel
+public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext() : base("DefaultConnection")
+    {
+    }
 
-    public class URegisterData
+    public DbSet<UserDbTable> Users { get; set; }
+    public DbSet<Session> Sessions { get; set; }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<UserDbTable>()
+            .ToTable("Users")
+            .HasKey(u => u.Id);
+
+        modelBuilder.Entity<Session>()
+            .ToTable("Sessions")
+            .HasKey(s => s.Id);
     }
-    public class ApplicationDbContext : DbContext
+
+    // 👇 Aceasta este metoda corectă
+    public void SeedAdmin()
     {
-        public ApplicationDbContext() :
-            base("name=AlignUpConnection")
+        try
         {
-            // Disable initializer to prevent automatic database creation
-            var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+            if (!this.Users.Any(u => u.Username == "admin"))
+            {
+                var hashedPassword = PasswordHelper.HashPassword("admin");
+
+                this.Users.Add(new UserDbTable
+                {
+                    Username = "admin",
+                    Email = "admin@alignup.com",
+                    Password = hashedPassword,
+                    RegistrationDateTime = DateTime.Now,
+                    RegistrationIp = "127.0.0.1",
+                    LastLogin = DateTime.Now,
+                    LastIp = "127.0.0.1",
+                    UserRole = UserApi.UserRole.Admin
+                });
+
+                this.SaveChanges();
+                System.Diagnostics.Debug.WriteLine("✔ Utilizatorul admin a fost creat.");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("ℹ Utilizatorul admin există deja.");
+            }
         }
-        public DbSet<URegisterData> URegisterData { get; set; }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"❌ Eroare la crearea utilizatorului admin: {ex.Message}");
+        }
     }
-    }
+}

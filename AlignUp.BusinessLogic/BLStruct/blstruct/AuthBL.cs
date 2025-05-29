@@ -4,7 +4,6 @@ using AlignUp.Domain.Model.User;
 using System;
 using System.Collections.Generic;
 using static AlignUp.BusinessLogic.Core.UserApi;
-using UserRegisterDTO = AlignUp.Domain.Model.User.UserRegisterDTO;
 
 namespace AlignUp.BusinessLogic.BLStruct
 {
@@ -40,10 +39,23 @@ namespace AlignUp.BusinessLogic.BLStruct
             });
         }
 
-        // TODO: Implement other IAuth methods as needed
+        public bool UserRegister(UserApi.UserRegisterDTO userRegister)
+        {
+            var result = _userApi.UserRegisterAction(new Core.UserApi.UserRegisterDTO
+            {
+                Username = userRegister.Username,
+                Email = userRegister.Email,
+                Password = userRegister.Password,
+                RegistrationIp = userRegister.RegistrationIp
+            });
+
+            System.Diagnostics.Debug.WriteLine($"🔧 Înregistrare: {userRegister.Username} -> {result.StatusMessage}");
+            return result.Status;
+        }
+
         public void AddUser(Domain.Model.User.UserDbTable user) => throw new NotImplementedException();
         public void AddUser(Core.UserDbTable user) => throw new NotImplementedException();
-        public bool ChangeUserRole(int userId, UserApi.UserRole newRole) => true;
+        public bool ChangeUserRole(int userId, UserRole newRole) => true;
         public void DeleteUser(int id) { }
         public List<Domain.Model.User.UserDbTable> GetAllUsers() => throw new NotImplementedException();
         public List<Domain.Model.User.UserDbTable> GetRecentUsers(int count) => throw new NotImplementedException();
@@ -52,12 +64,6 @@ namespace AlignUp.BusinessLogic.BLStruct
         public UserInfo GetUserInfoByToken(string token) => new UserInfo();
         public List<Domain.Model.User.UserDbTable> GetUsersByRole(UserRole role) => throw new NotImplementedException();
         public void UpdateUser(Domain.Model.User.UserDbTable user) => throw new NotImplementedException();
-        public bool UserRegister(UserRegisterDTO userRegister) => true;
         public bool ValidateUserToken(string token) => true;
-
-        bool IAuth.UserRegister(UserApi.UserRegisterDTO userRegister)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

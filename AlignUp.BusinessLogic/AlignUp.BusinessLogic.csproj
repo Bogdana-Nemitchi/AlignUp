@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLStruct\AuthBL.cs" />
+    <Compile Include="BLStruct\blstruct\AuthBL.cs" />
     <Compile Include="BusinessLogic.cs" />
-    <Compile Include="Core\AdminApi.cs" />
+    <Compile Include="BLStruct\Core\AdminApi.cs" />
     <Compile Include="DBModel\ApplicationDbcontext.cs" />
     <Compile Include="Interface\IAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
