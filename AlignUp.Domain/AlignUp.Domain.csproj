@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\User\UserApi.cs" />
     <Compile Include="Model\User\UserDbTable.cs" />
     <Compile Include="Model\User\UserLoginDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

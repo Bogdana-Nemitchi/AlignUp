@@ -9,29 +9,58 @@ namespace AlignUp.BusinessLogic.BLStruct
 {
     public class AuthBL : IAuth
     {
-        public void AddUser(UserDbTable user) { }
+        public void AddUser(Domain.Model.User.UserDbTable user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUser(Core.UserDbTable user)
+        {
+            throw new NotImplementedException();
+        }
 
         public bool ChangeUserRole(int userId, UserApi.UserRole newRole) => true;
 
         public void DeleteUser(int id) { }
 
-        public List<UserDbTable> GetAllUsers() => new List<UserDbTable>();
+        public List<Domain.Model.User.UserDbTable> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
 
-        public List<UserDbTable> GetRecentUsers(int count) => new List<UserDbTable>();
+        public List<Domain.Model.User.UserDbTable> GetRecentUsers(int count)
+        {
+            throw new NotImplementedException();
+        }
 
         public int GetTotalUserCount() => 0;
 
-        public UserDbTable GetUserById(int id) => new UserDbTable();
+        public Domain.Model.User.UserDbTable GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         public UserInfo GetUserInfoByToken(string token) => new UserInfo();
 
-        public List<UserDbTable> GetUsersByRole(UserApi.UserRole role) => new List<UserDbTable>();
+        public List<Domain.Model.User.UserDbTable> GetUsersByRole(UserRole role)
+        {
+            throw new NotImplementedException();
+        }
 
-        public void UpdateUser(UserDbTable user) { }
+        public void UpdateUser(Domain.Model.User.UserDbTable user)
+        {
+            throw new NotImplementedException();
+        }
 
-        public string UserAuthLogic(UserLoginDTO data) => data.Username == "admin" && data.Password == "admin" ? Guid.NewGuid().ToString() : null;
+        public string UserAuthLogic(Domain.Model.User.UserLoginDTO loginDataForLogic)
+        {
+            throw new NotImplementedException();
+        }
 
-        public UserLoginResponseDTO UserLogin(UserLoginDTO userLogin) => new UserLoginResponseDTO();
+        public UserLoginResponseDTO UserLogin(Domain.Model.User.UserLoginDTO userLogin)
+        {
+            throw new NotImplementedException();
+        }
 
         public bool UserRegister(UserRegisterDTO userRegister) => true;
 
