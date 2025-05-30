@@ -1,0 +1,443 @@
+﻿@model AlignUp.Domain.Model.User.UserRegisterDTO
+
+@{
+    ViewBag.Title = "Înregistrare";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Înregistrare - Video Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --text-color: #333;
+            --dark-bg: #033E8C; /* Albastrul închis pentru fundaluri */
+            --primary-color: #007bff; /* O culoare primară generică, ajustați după nevoie */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('@Url.Content("~/img/hero.jpg")') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .site-logo {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .site-name {
+            font-size: 1.2rem;
+            color: white;
+            margin: 0;
+        }
+
+        .auth-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+             /* padding-top: valoarea headerHeight + 20px; dacă header-ul este fix */
+        }
+
+        .auth-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h2 {
+            color: var(--text-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: #777;
+            font-size: 1rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Folosind direct valoarea var(--primary-color) */
+            outline: none;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #999;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label,
+        .input-group label.active-label-float { /* Adăugat pentru JS */
+            top: -10px;
+            left: 10px;
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--primary-color);
+            color: #fff; /* Schimbat pentru contrast mai bun */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        }
+
+        .btn-auth:hover {
+            background-color: var(--dark-bg);
+            color: #fff;
+        }
+
+        .btn-auth:active {
+            transform: scale(0.98);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .login-link p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .login-link a:hover {
+            color: var(--dark-bg);
+            text-decoration: underline;
+        }
+
+        .back-link {
+            position: fixed; /* Schimbat în fixed pentru a rămâne vizibil la scroll */
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            transition: color 0.3s;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            z-index: 10; /* Asigură că este deasupra altor elemente simple */
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        .debug-info {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .text-danger { /* Adăugat pentru mesajele de validare individuale */
+            color: #dc3545; /* Roșu Bootstrap standard pentru erori */
+            font-size: 0.875em; /* Puțin mai mic */
+            display: block; /* Asigură că este pe linia lui */
+            margin-top: .25rem;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto; /* Împinge footer-ul în partea de jos dacă conținutul este scurt */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @@media (max-width: 768px) {
+            .auth-box {
+                padding: 30px;
+            }
+            .logo-container { padding: 10px; }
+            .site-logo { font-size: 1.5rem; }
+            .site-name { font-size: 1rem; }
+        }
+
+        @@media (max-width: 480px) {
+            .auth-container { padding: 80px 15px; }
+            .auth-box { padding: 25px 20px; }
+            .auth-header h2 { font-size: 1.7rem; }
+            .header-container { padding: 10px; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="@Url.Action("Index", "Home")" class="logo-container">
+                <h1 class="site-name">AlignUp</h1>
+            </a>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-box fade-in">
+            <div class="auth-header">
+                <h2>Creează Cont Nou</h2>
+                <p>Completează formularul de mai jos pentru a te înregistra.</p>
+            </div>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @if (TempData["RegistrationError"] != null)
+            {
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> @TempData["RegistrationError"]
+                </div>
+            }
+
+            @if (ViewBag.DebugInfo != null)
+            {
+                <div class="debug-info">
+                    <strong>Debug:</strong> @ViewBag.DebugInfo
+                </div>
+            }
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> @ViewBag.Error
+                </div>
+            }
+
+            @Html.ValidationSummary(true, "", new { @class = "error-message" })
+
+            <form action="@Url.Action("Register", "Auth")" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Username, new { id = "Username", required = "required", autocomplete = "username", placeholder = " " })
+                    @Html.LabelFor(m => m.Username, "Nume de utilizator")
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.Email, new { type = "email", id = "Email", required = "required", autocomplete = "email", placeholder = " " })
+                    @Html.LabelFor(m => m.Email, "Adresă de email")
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="input-group">
+                    @Html.PasswordFor(m => m.Password, new { id = "Password", required = "required", autocomplete = "new-password", placeholder = " " })
+                    @Html.LabelFor(m => m.Password, "Parolă")
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="input-group">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { id = "ConfirmPassword", required = "required", autocomplete = "new-password", placeholder = " " })
+                    @Html.LabelFor(m => m.ConfirmPassword, "Confirmă parola")
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    <i class="fas fa-user-plus"></i> Înregistrează-te
+                </button>
+
+                <div class="login-link">
+                    <p>Ai deja cont? <a href="@Url.Action("Login", "Auth")">Autentifică-te</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Index", "Home")" class="back-link">
+        <i class="fas fa-arrow-left"></i> Înapoi la pagina principală
+    </a>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year VideoCatalog. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script src="@Url.Content("~/js/jquery-3.4.1.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Username').focus();
+
+            function setLabelActive(inputElement) {
+                if ($(inputElement).val() !== '' && $(inputElement).attr('placeholder') === ' ') {
+                    $(inputElement).siblings('label').addClass('active-label-float');
+                } else {
+                    $(inputElement).siblings('label').removeClass('active-label-float');
+                }
+            }
+
+            $('.input-group input[placeholder=" "]').each(function () {
+                setLabelActive(this); // Setează starea inițială
+            }).on('input focus', function () { // Activează la input sau focus
+                $(this).siblings('label').addClass('active-label-float');
+            }).on('blur', function () { // Dezactivează la blur doar dacă e gol
+                if ($(this).val() === '') {
+                    $(this).siblings('label').removeClass('active-label-float');
+                }
+            });
+
+            function adjustBodyPadding() {
+                var header = $('header');
+                if (header.length && header.css('position') === 'fixed') {
+                    var headerHeight = header.outerHeight();
+                    $('body').css('padding-top', headerHeight + 'px');
+                    // Ajustează și containerul principal dacă este necesar
+                    $('.auth-container').css('padding-top', '20px'); // Sau o altă valoare potrivită
+                }
+            }
+
+            adjustBodyPadding();
+            $(window).resize(adjustBodyPadding);
+        });
+    </script>
+</body>
+</html>
+
+

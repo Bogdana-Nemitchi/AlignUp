@@ -51,12 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLStruct\AuthBL.cs" />
+    <Compile Include="BLStruct\blstruct\AuthBL.cs" />
+    <Compile Include="BLStruct\blstruct\AuthBLBase.cs" />
+    <Compile Include="BLStruct\Core\UserInfo.cs" />
     <Compile Include="BusinessLogic.cs" />
-    <Compile Include="Core\AdminApi.cs" />
-    <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\ApplicationDbcontext.cs" />
     <Compile Include="Interface\IAuth.cs" />
+    <Compile Include="Migrations\202505292333337_UpdatedModel.cs" />
+    <Compile Include="Migrations\202505292333337_UpdatedModel.Designer.cs">
+      <DependentUpon>202505292333337_UpdatedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +77,14 @@
       <Project>{22204c41-497d-43cc-a9ee-7abfc53f24c8}</Project>
       <Name>AlignUp.Helper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202505292333337_UpdatedModel.resx">
+      <DependentUpon>202505292333337_UpdatedModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AlignUp\Domain\Model\User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

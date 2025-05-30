@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlignUp.Domain.Model.User
 {
-    internal class UserDbTable
+    public class UserDbTable
     {
     }
 }
