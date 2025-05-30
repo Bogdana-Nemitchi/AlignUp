@@ -9,24 +9,40 @@ namespace AlignUp.Web.Controllers
     public class ContentController : Controller
     {
         // GET: Content
-        public ActionResult Video1()
+        public ActionResult video1()
         {
             return View();
         }
 
-        public ActionResult Video2()
+        public ActionResult video2()
         {
             return View();
         }
-        public ActionResult Video3()
+        public ActionResult video3()
         {
             return View();
         }
-        public ActionResult Video4()
+        public ActionResult video4()
         {
             return View();
         }
-        public ActionResult Video5()
+        public ActionResult video5()
+        {
+            return View();
+        }
+        public ActionResult video6()
+        {
+            return View();
+        }
+        public ActionResult video7()
+        {
+            return View();
+        }
+        public ActionResult video8()
+        {
+            return View();
+        }
+        public ActionResult video9()
         {
             return View();
         }

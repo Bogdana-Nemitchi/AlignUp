@@ -49,7 +49,7 @@ h2, p { color: #666666; }
 .tm-site-name { font-size: 1.9rem; }
 
 #tm-video-container {
-    max-height: 720px;
+    max-height: 700px;
     overflow: hidden;
     background-color: #333;
 }
@@ -343,17 +343,76 @@ h2, p { color: #666666; }
 .tm-text-gray { color: #6F7071; }
 
 .tm-fixed-header {
-    background-position: center;
+    background-position: center ;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;    
+    background-size: cover;
     background-color: #666;
 }
 
+
+.tm-fixed-header-video1 {
+    background-image: url(../img/eyese.jpeg); 
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+.tm-fixed-header-video3 {
+    background-image: url(../img/photo_5314475928459538811_x.jpg);
+    background-size: cover;
+    background-position: center calc(100% - 55px);
+    background-repeat: no-repeat;
+    height: 500px
+}
+
+.tm-fixed-header-video5 {
+    background-image: url(../img/photo_5314475928459538815_y.jpg);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    height: 500px
+}
+
+.tm-fixed-header-video7 {
+    background-image: url(../img/spate3.png);
+    background-size: cover;
+    background-position: center calc(100% - 61px);
+    background-repeat: no-repeat;
+    height: 500px
+}
+.tm-fixed-header-video8 {
+    background-image: url(../img/schimba_viata_13.jpg);
+    background-size: cover;
+    background-position: center calc(100% - 20px);
+    background-repeat: no-repeat;
+    height: 500px
+}
+
+.tm-fixed-header-video9 {
+    background-image: url(../img/disciplina40.jpg);
+    background-size: cover;
+    background-position: center calc(100% - 50px);
+    background-repeat: no-repeat;
+    height: 500px
+}
+
 #tm-fixed-header-bg { height: 450px; }
-.tm-fixed-header-1 { background-image: url(../img/video-detail-1.jpg); }
+
 .tm-fixed-header-2 { background-image: url(../img/about-1.jpg); }
 .tm-fixed-header-3 { background-image: url(../img/contact-1.jpg); }
+
+.tm-fixed-header-4 {
+    background-image: url(../img/photo_5314475928459538813_x.jpg);
+}
+
+.tm-fixed-header-6 {
+    background-image: url(../img/photo_5314475928459538812_y.jpg);
+}
+
+.tm-fixed-header-8 {
+    background-image: url(../img/ochi1.jpg);
+}
+
 
 video {
   width: 100%;
@@ -526,3 +585,13 @@ video {
         flex-direction: column;
     }
 }
+.tm-thumbnail-container {
+    height: 250px;
+    overflow: hidden;
+}
+
+    .tm-thumbnail-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
