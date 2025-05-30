@@ -1,4 +1,4 @@
-﻿using AlignUp.BusinessLogic.Core;
+﻿using AlignUp.Domain.Core;
 using System;
 using System.Data.Entity;
 using System.Linq;

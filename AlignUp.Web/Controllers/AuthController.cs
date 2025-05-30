@@ -1,4 +1,4 @@
-﻿using AlignUp.BusinessLogic.Interface;
+﻿using AlignUp.Domain.Interface;
 using AlignUp.Domain.Model.User;
 using AlignUp.Web.Models.Auth;
 using System;
@@ -7,8 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using static AlignUp.BusinessLogic.Core.UserApi;
-using UserRegisterDTO = AlignUp.BusinessLogic.Core.UserApi.UserRegisterDTO;
+using static AlignUp.Domain.Core.UserApi;
+using UserRegisterDTO = AlignUp.Domain.Core.UserApi.UserRegisterDTO;
 
 namespace AlignUp.Web.Controllers
 {
@@ -17,7 +17,7 @@ namespace AlignUp.Web.Controllers
         private readonly IAuth _auth;
         public AuthController()
         {
-            var bl = new BusinessLogic.BusinessLogic();
+            var bl = new Domain.BusinessLogic();
            _auth = bl.GetAuthBL();
         }
 
@@ -93,7 +93,7 @@ namespace AlignUp.Web.Controllers
             registerData.RegistrationIp = Request.UserHostAddress;
 
             // Mapezi manual în tipul din business logic
-            var mappedData = new AlignUp.BusinessLogic.Core.UserApi.UserRegisterDTO
+            var mappedData = new AlignUp.Domain.Core.UserApi.UserRegisterDTO
             {
                 Username = registerData.Username,
                 Email = registerData.Email,

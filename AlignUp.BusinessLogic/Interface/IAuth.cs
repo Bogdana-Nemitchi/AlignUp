@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using AlignUp.BusinessLogic.Core;
+using AlignUp.Domain.Core;
 using AlignUp.Domain.Model.User;
 
-namespace AlignUp.BusinessLogic.Interface
+namespace AlignUp.Domain.Interface
 {
     public interface IAuth
     {

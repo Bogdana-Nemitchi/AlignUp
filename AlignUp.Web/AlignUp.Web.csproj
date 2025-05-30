@@ -230,6 +230,10 @@
       <Project>{7560e315-ed75-4b7f-97d9-5ff0b8e4c6f6}</Project>
       <Name>AlignUp.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AlignUp.Helper\AlignUp.Helper.csproj">
+      <Project>{22204c41-497d-43cc-a9ee-7abfc53f24c8}</Project>
+      <Name>AlignUp.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

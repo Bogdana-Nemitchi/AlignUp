@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
-using static AlignUp.BusinessLogic.Core.UserApi;
+using static AlignUp.Domain.Core.UserApi;
 
-namespace AlignUp.BusinessLogic.Core
+namespace AlignUp.Domain.Core
 {
     public class UserApiBase
     {

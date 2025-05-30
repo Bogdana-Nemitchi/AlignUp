@@ -6,7 +6,7 @@ using System.Web;
 using System.Collections.Generic;
 using AlignUp.Domain.Model.User;
 using System.Data.Entity.Infrastructure;
-namespace AlignUp.BusinessLogic.Core
+namespace AlignUp.Domain.Core
 {
   
     public class UserDbTable

@@ -1,11 +1,11 @@
-﻿using AlignUp.BusinessLogic.Core;
-using AlignUp.BusinessLogic.Interface;
+﻿using AlignUp.Domain.Core;
+using AlignUp.Domain.Interface;
 using AlignUp.Domain.Model.User;
 using System;
 using System.Collections.Generic;
-using static AlignUp.BusinessLogic.Core.UserApi;
+using static AlignUp.Domain.Core.UserApi;
 
-namespace AlignUp.BusinessLogic.BLStruct
+namespace AlignUp.Domain.BLStruct
 {
     public class AuthBL : IAuth
     {
@@ -61,9 +61,13 @@ namespace AlignUp.BusinessLogic.BLStruct
         public List<Domain.Model.User.UserDbTable> GetRecentUsers(int count) => throw new NotImplementedException();
         public int GetTotalUserCount() => 0;
         public Domain.Model.User.UserDbTable GetUserById(int id) => throw new NotImplementedException();
-        public UserInfo GetUserInfoByToken(string token) => new UserInfo();
         public List<Domain.Model.User.UserDbTable> GetUsersByRole(UserRole role) => throw new NotImplementedException();
         public void UpdateUser(Domain.Model.User.UserDbTable user) => throw new NotImplementedException();
         public bool ValidateUserToken(string token) => true;
+
+        public UserInfo GetUserInfoByToken(string token)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
